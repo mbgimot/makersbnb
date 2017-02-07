@@ -16,3 +16,15 @@ feature 'user can list a space' do
 
   end
 end
+
+feature 'user can list multiple spaces' do
+  scenario 'user can fill in the listings form and create a space in the database, then create another one' do
+    visit '/'
+    sign_up_true
+    list_space
+    list_another_space
+    expect( current_path ).to eq '/spaces/view'
+    expect( page ).to have_content('House by the sea')
+    expect( page ).to have_content('Penthouse apartment')
+  end
+end
