@@ -16,10 +16,6 @@ class MakersBnB < Sinatra::Base
 
   helpers Helpers
 
-  before do
-    Space.count > 0 ? @spaces = Space.all : @spaces = nil
-  end
-
   get '/' do
     erb(:index)
   end
