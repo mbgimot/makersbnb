@@ -10,6 +10,8 @@ class User
   property :password, BCryptHash
   attr_accessor :password_conf
 
+  has n, :spaces
+
   validates_confirmation_of :password, confirm: :password_conf
   validates_presence_of :email
   validates_uniqueness_of :email

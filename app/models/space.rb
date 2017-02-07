@@ -8,6 +8,7 @@ class Space
   property :price, Decimal, precision: 15, scale: 2, :required => true
   property :availability, Boolean, :default => true
   property :date_available, DateTime
-  #belongs_to :user
+
+  belongs_to :user
 
 end
