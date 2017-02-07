@@ -6,4 +6,20 @@
   <input type='submit' value='Logout'>
 </form>
 
-<a href="/spaces/list">List a space</a>
+<a href="/spaces/new">List a space</a>
+
+<h1>Spaces</h1>
+
+<div class='spaces'>
+  <ul class="list-unstyled spaces">
+    <% @spaces.each do |space| %>
+      <li>
+        <div id="space">
+          <p class='header'><b><%= space.name %></b></p>
+          <p class='content'><%= space.description %></p>
+          <p class='price'>£<%= space.price %> per night</p>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>

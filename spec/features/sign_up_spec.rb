@@ -13,7 +13,7 @@ feature 'sign up form' do
     context 'password matches' do
       scenario 'can sign up' do
         sign_up('name', 'test@test.com', 'password', 'password')
-        expect(current_path).to eq('/spaces')
+        expect(current_path).to eq('/spaces/view')
         expect(page).to have_content("Welcome, name")
       end
 
