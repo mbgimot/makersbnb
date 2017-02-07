@@ -14,7 +14,7 @@ feature 'sign up form' do
       scenario 'can sign up' do
         sign_up('name', 'test@test.com', 'password', 'password')
         expect(current_path).to eq('/spaces')
-        expect(page).to have_content("Welcome, test@test.com")
+        expect(page).to have_content("Welcome, name")
       end
 
       scenario 'signing up increases user count' do

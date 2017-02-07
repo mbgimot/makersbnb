@@ -14,13 +14,12 @@ class MakersBnB < Sinatra::Base
   use Rack::Session::EncryptedCookie,
     secret: '1ad3e5c2b617e329aad83a5749d133ea426070d31bd2e11f9f4df626f966a259'
 
-
   DataMapper::Logger.new($stdout, :debug)
 
   helpers Helpers
 
   get '/' do
-    erb :index
+    erb(:index)
   end
 
   get '/users/new' do
@@ -53,6 +52,17 @@ class MakersBnB < Sinatra::Base
     end
   end
 
+  delete '/sessions' do
+    session[:user_id] = nil
+    session[:email] = nil
+    session[:name] = nil
+    flash.keep[:notice] = "Goodbye!"
+    redirect to '/'
+  end
+
+  get '/spaces' do
+    erb(:'spaces/list')
+  end
 
   # start the server if ruby file executed directly
   run! if app_file == $0

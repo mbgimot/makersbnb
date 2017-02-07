@@ -16,7 +16,7 @@ feature 'sign in' do
     end
     scenario 'welcome message is displayed' do
       sign_in('test@test.com', 'password')
-      expect(page).to have_content('Welcome, test@test.com')
+      expect(page).to have_content('Welcome, name')
     end
   end
   context 'invalid sign in' do
