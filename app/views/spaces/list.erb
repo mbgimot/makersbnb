@@ -1,0 +1,23 @@
+<html>
+<body>
+
+<h1> Enter the details of your space </h1>
+
+<form name ='list_space' action='/spaces/list' method='post'>
+  <label for='name'>
+    Name of space <br />
+  <input type="text" name="name"><br />
+  <label for='description'>
+    Description <br />
+  <input type="text" name="description" /><br />
+  <label for='price'>
+    Price per night (£)<br />
+  <input type="number" name="price" min="0.01" step="0.01" /><br />
+  <label for='available_date'>
+    Select available date <br />
+  <input type="date" name="available_date" /><br />
+
+
+<button type="submit" value='Submit'>List space</button>
+</body>
+</html>
