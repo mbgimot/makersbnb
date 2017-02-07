@@ -30,7 +30,7 @@ class MakersBnB < Sinatra::Base
     user = User.create(name: params[:name], email: params[:email], password: params[:password], password_conf: params[:password_conf])
     if user.save
       session[:user_id] = user.id
-      redirect '/spaces'
+      redirect '/spaces/view'
     else
       session[:email] = params[:email]
       session[:name] = params[:name]
@@ -43,7 +43,7 @@ class MakersBnB < Sinatra::Base
     user = User.authenticate(params[:email], params[:password])
     if user
       session[:user_id] = user.id
-      redirect '/spaces'
+      redirect '/spaces/view'
     else
       flash[:errors] = ['The email or password is incorrect.']
       redirect '/'
@@ -58,11 +58,8 @@ class MakersBnB < Sinatra::Base
     redirect to '/'
   end
 
-  get '/spaces' do
-    erb(:'spaces/view')
-  end
-
   get '/spaces/view' do
+    @spaces = Space.all.reverse
     erb :'spaces/view'
   end
 
