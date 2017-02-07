@@ -1,4 +1,4 @@
-require 'data_mapper'
+require 'datamapper'
 require 'dm-postgres-adapter'
 
 require_relative 'models/user'
