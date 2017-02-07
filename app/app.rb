@@ -14,8 +14,6 @@ class MakersBnB < Sinatra::Base
   use Rack::Session::EncryptedCookie,
     secret: '1ad3e5c2b617e329aad83a5749d133ea426070d31bd2e11f9f4df626f966a259'
 
-  DataMapper::Logger.new($stdout, :debug)
-
   helpers Helpers
 
   get '/' do
@@ -61,7 +59,7 @@ class MakersBnB < Sinatra::Base
   end
 
   get '/spaces' do
-    erb(:'spaces/list')
+    erb(:'spaces/view')
   end
 
   # start the server if ruby file executed directly
