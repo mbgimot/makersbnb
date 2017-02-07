@@ -20,6 +20,7 @@ require 'rspec'
 require 'database_cleaner'
 require 'dm-transactions'
 #require_relative './helpers/web_helpers'
+require_relative 'helpers/session'
 
 Capybara.app = MakersBnB
 
@@ -57,18 +58,18 @@ RSpec.configure do |config|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
   end
 
-  # config.before(:suite) do
-  #    DatabaseCleaner.strategy = :transaction
-  #    DatabaseCleaner.clean_with(:truncation)
-  #  end
-  #
-  #  config.before(:each) do
-  #    DatabaseCleaner.start
-  #  end
-  #
-  #  config.after(:each) do
-  #    DatabaseCleaner.clean
-  #  end
+  config.before(:suite) do
+     DatabaseCleaner.strategy = :transaction
+     DatabaseCleaner.clean_with(:truncation)
+   end
+
+   config.before(:each) do
+     DatabaseCleaner.start
+   end
+
+   config.after(:each) do
+     DatabaseCleaner.clean
+   end
 
   # rspec-mocks config goes here. You can use an alternate test double
   # library (such as bogus or mocha) by changing the `mock_with` option here.

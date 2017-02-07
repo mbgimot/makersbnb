@@ -1,4 +1,9 @@
+<% if current_user %>
+  Welcome, <%= current_user.name %>
+<% end %>
+<form method='post' action='/sessions'>
+  <input type='hidden' name='_method' value='delete'>
+  <input type='submit' value='Logout'>
+</form>
 
-<html>
 <a href="/spaces/list">List a space</a>
-</html>
