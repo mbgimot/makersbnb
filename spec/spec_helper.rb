@@ -20,7 +20,7 @@ require 'rspec'
 require 'database_cleaner'
 require 'dm-transactions'
 #require_relative './helpers/web_helpers'
-require_relative './helpers/session'
+require_relative 'helpers/session'
 
 Capybara.app = MakersBnB
 

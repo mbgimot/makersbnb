@@ -1,4 +1,5 @@
 require 'spec_helper'
+include SessionHelpers
 
 feature 'sign up form' do
 
@@ -7,15 +8,6 @@ feature 'sign up form' do
   #   click_button('Back')
   #   expect(page).to have_current_path('/')
   # end
-
-  def sign_up(name, email, password, password_conf)
-    visit ('/users/new')
-    fill_in 'name', with: name
-    fill_in 'email', with: email
-    fill_in 'password', with: password
-    fill_in 'password_conf', with: password_conf
-    click_button 'Sign Up'
-  end
 
   context 'password verification' do
     context 'password matches' do

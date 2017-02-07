@@ -20,7 +20,7 @@ class MakersBnB < Sinatra::Base
   helpers Helpers
 
   get '/' do
-    'Hello MakersBnB!'
+    erb :index
   end
 
   get '/users/new' do
@@ -39,6 +39,17 @@ class MakersBnB < Sinatra::Base
       session[:name] = params[:name]
       flash[:errors] = user.errors.full_messages
       redirect '/users/new'
+    end
+  end
+
+  post '/users/existing' do
+    user = User.authenticate(params[:email], params[:password])
+    if user
+      session[:user_id] = user.id
+      redirect '/spaces'
+    else
+      flash[:errors] = ['The email or password is incorrect.']
+      redirect '/'
     end
   end
 
