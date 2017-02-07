@@ -1,4 +1,3 @@
-
 class Space
   include DataMapper::Resource
 
