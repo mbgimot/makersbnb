@@ -44,3 +44,12 @@ def list_another_space
   fill_in(:date_available, with:'2017-02-24')
   click_button('List space')
 end
+
+def create_spaces
+  user = User.create(name: 'name',
+  email: 'test@test.com',
+  password: 'password',
+  password_conf: 'password')
+  @space = user.spaces.create(name: 'House by the sea', description: 'Lovely two-bed apartment overlooking the sea.', price: 35.00, date_available: '2017-02-10 00:00:00')
+  @space = user.spaces.create(name: 'Penthouse apartment', description: 'Incredible views from this top storey apartment in London', price: 100.00, date_available: '2017-02-10 00:00:00')
+end
