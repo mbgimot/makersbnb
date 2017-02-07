@@ -1,6 +1,3 @@
-require 'bcrypt'
-require 'dm-validations'
-
 class User
   include DataMapper::Resource
 
@@ -9,6 +6,8 @@ class User
   property :email, String, required: true, unique: true, format: :email_address
   property :password, BCryptHash
   attr_accessor :password_conf
+
+  has n, :spaces
 
   validates_confirmation_of :password, confirm: :password_conf
   validates_presence_of :email

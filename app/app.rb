@@ -16,6 +16,10 @@ class MakersBnB < Sinatra::Base
 
   helpers Helpers
 
+  before do
+    Space.count > 0 ? @spaces = Space.all : @spaces = nil
+  end
+
   get '/' do
     erb(:index)
   end
@@ -68,6 +72,8 @@ class MakersBnB < Sinatra::Base
   end
 
   post '/spaces/new' do
+    user = User.get(session[:user_id])
+    space = user.spaces.create(name: params[:name], description: params[:description], price: params[:price], availability: params[:availability], date_available: params[:date_available])
     redirect '/spaces/view'
   end
 

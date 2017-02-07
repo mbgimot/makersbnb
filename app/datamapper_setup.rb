@@ -1,5 +1,10 @@
+require 'rubygems'
 require 'data_mapper'
 require 'dm-postgres-adapter'
+require 'dm-core'
+require 'dm-timestamps'
+require 'bcrypt'
+require 'dm-validations'
 
 require_relative 'models/user'
 require_relative 'models/space'

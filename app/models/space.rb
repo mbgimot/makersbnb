@@ -1,4 +1,3 @@
-
 class Space
   include DataMapper::Resource
 
@@ -8,6 +7,7 @@ class Space
   property :price, Decimal, :required => true
   property :availability, Boolean, :default => true
   property :date_available, DateTime
-  #belongs_to :user
+
+  belongs_to :user
 
 end
