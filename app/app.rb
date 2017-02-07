@@ -73,6 +73,11 @@ class MakersBnB < Sinatra::Base
     redirect '/spaces/view'
   end
 
+  get '/spaces/:id' do
+    @space = Space.first(id: params[:id])
+    erb(:'spaces/details')
+  end
+
   # start the server if ruby file executed directly
   run! if app_file == $0
 end

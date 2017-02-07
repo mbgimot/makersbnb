@@ -11,13 +11,13 @@ feature 'user can list a space' do
     sign_in('test@test.com', 'password')
     expect(@space.user.name).to eq('name')
   end
-  
+
   scenario 'user can fill in the listings form and create a space in the database' do
     visit '/'
     sign_up_true
     list_space
-    expect( current_path ).to eq '/spaces/view'
-    expect( page ).to have_content('House by the sea')
+    expect(current_path).to eq '/spaces/view'
+    expect(page).to have_content('House by the sea')
   end
 
   scenario 'user can add multiple listings' do

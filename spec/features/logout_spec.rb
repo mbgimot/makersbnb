@@ -1,5 +1,4 @@
 require 'spec_helper'
-include SessionHelpers
 
 feature 'User signs out' do
 
