@@ -2,11 +2,8 @@ require 'spec_helper'
 
 feature 'user can list a space' do
   scenario 'user can fill in the listings form and create a space in the database' do
-
-    # log_in
-
-    visit '/spaces/view'
-
+    visit '/'
+    sign_up_true
     click_link('List a space')
     fill_in(:name, with: 'House by the sea')
     fill_in(:description, with: 'Lovely two-bed apartment overlooking the sea.')

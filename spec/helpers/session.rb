@@ -8,10 +8,21 @@ module SessionHelpers
     click_button 'Sign Up'
   end
 
+
   def sign_in(email, password)
     visit ('/')
     fill_in 'email', with: email
     fill_in 'password', with: password
     click_button 'Login'
   end
+end
+
+
+def sign_up_true
+  visit ('/users/new')
+  fill_in 'name', with: 'Betty'
+  fill_in 'email', with: 'betty@bettymail.com'
+  fill_in 'password', with: 'password'
+  fill_in 'password_conf', with: 'password'
+  click_button 'Sign Up'
 end
