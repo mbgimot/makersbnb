@@ -66,11 +66,11 @@ class MakersBnB < Sinatra::Base
     erb :'spaces/view'
   end
 
-  get '/spaces/list' do
-    erb :'spaces/list'
+  get '/spaces/new' do
+    erb :'spaces/new'
   end
 
-  post '/spaces/list' do
+  post '/spaces/new' do
     redirect '/spaces/view'
   end
 
