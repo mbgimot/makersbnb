@@ -93,16 +93,15 @@ class MakersBnB < Sinatra::Base
   post '/requests/new' do
     @user = current_user
     space = Space.first(id: params[:id])
-    if params[:date_requested] == space.date_available.strftime("%Y-%m-%d")
+    booking_date = params[:date_requested]
+    if booking_date == space.date_available.strftime("%Y-%m-%d")
       request = space.requests.create(date_requested: params[:date_requested], user: @user)
       flash.next[:request_sent] = ["Your request has been sent to the owner"]
       redirect '/requests/view'
     else
-      flash.now[:errors] = ["The selected date is not available"]
+      flash.now[:request_not_sent] = ["The selected date is not available"]
     end
   end
-
-
 
   # start the server if ruby file executed directly
   run! if app_file == $0

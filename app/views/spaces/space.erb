@@ -1,3 +1,8 @@
+<h3><%if flash[:request_not_sent]%></h3>
+<h3> <%=flash[:request_not_sent]%></h3>
+<%end%>
+
+
 <div>
 <%= @space.name %><br>
 <%= @space.user.name %><br>

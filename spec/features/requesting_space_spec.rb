@@ -13,7 +13,7 @@ feature 'renter can request a space for one night' do
     sign_up('Bob', 'bob@bobmail.com', 'password', 'password')
     sign_in('bob@bobmail.com', 'password')
     click_link('Details')
-    fill_in(:date_requested, with:'2017-02-10')
+    fill_in(:date_requested, with:'2017-02-24')
     click_button('Request space')
     expect(page).to have_content('Your request has been sent to the owner')
   end
