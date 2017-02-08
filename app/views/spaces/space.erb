@@ -6,12 +6,12 @@
 </div>
 
 <div>
-  <p>Date available: <%= @space.date_available %> </p>
+  <p>Date available: <%= @space.date_available.strftime("%d %B, %Y") %> </p>
 </div>
 
 <form action='/requests/new' method='POST'>
 
-  <input type="date" name="date_requested" value='<%= @space.date_available %>'>
+  <input type="date" name="date_requested" value='<%= @space.date_available.strftime("%Y-%m-%d") %>'>
   <input type='hidden' name='id' value='<%= @space.id %>'>
 
 <button type="submit" value='request'>Request space</button>
