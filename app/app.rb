@@ -61,11 +61,11 @@ class MakersBnB < Sinatra::Base
 
   get '/spaces/view' do
     @spaces = Space.all.reverse
-    erb :'spaces/view'
+    erb(:'spaces/view')
   end
 
   get '/spaces/new' do
-    erb :'spaces/new'
+    erb(:'spaces/new')
   end
 
   post '/spaces/new' do
@@ -76,7 +76,14 @@ class MakersBnB < Sinatra::Base
 
   get '/spaces/:id' do
     @space = Space.first(id: params[:id])
-    erb(:'spaces/details')
+    erb(:'spaces/space')
+  end
+
+  get '/requests/view' do
+    @user = current_user
+    # space = Space.first(id: 1)
+    # request = space.requests.create(date_requested: '2017-02-10 00:00:00', user: @user)
+    erb(:'requests/view')
   end
 
   # start the server if ruby file executed directly

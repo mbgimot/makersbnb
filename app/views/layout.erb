@@ -6,6 +6,13 @@
   </head>
 
   <body>
+    <% if session[:user_id] %>
+      <form method='post' action='/sessions'>
+        <input type='hidden' name='_method' value='delete'>
+        <input type='submit' value='Logout'>
+      </form>
+    <% end %>
+
     <article class='layout' style="font-family: arial">
       <% if flash[:notice] %>
         <div id='notice'>
@@ -24,5 +31,6 @@
       <%end%>
       <%= yield %>
     </article>
+
   </body>
 </html>
