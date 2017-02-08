@@ -21,14 +21,24 @@ feature 'viewing submitted and recieved requests' do
     request = space.requests.create(date_requested: '2017-02-10 00:00:00', user: rentee)
   end
 
-  scenario 'requests page has correct details' do
+  scenario 'requests made has correct details' do
     sign_in('person@test.com', 'password')
 
     visit '/requests/view'
+    within 'ul.list-unstyled-made' do
+      expect(page).to have_content('Date Requested: 10 February, 2017')
+      expect(page).to have_content('Status: Pending')
+    end
+  end
 
-    expect(page).to have_content('Requests made')
-    expect(page).to have_content('Owner: name')
-    expect(page).to have_content('Rentee: person')
+  scenario 'requests received has correct details' do
+    sign_in('test@test.com', 'password')
+
+    visit '/requests/view'
+    within 'ul.list-unstyled-received' do
+      expect(page).to have_content('Date Requested: 10 February, 2017')
+      expect(page).to have_content('Status: Pending')
+    end
   end
 
 end

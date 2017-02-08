@@ -86,6 +86,12 @@ class MakersBnB < Sinatra::Base
     erb(:'requests/view')
   end
 
+  get '/requests/:id' do
+    p session[:user_id]
+    @request = Request.first(id: params[:id])
+    erb(:'requests/request')
+  end
+
   # start the server if ruby file executed directly
   run! if app_file == $0
 end

@@ -2,11 +2,14 @@
 
 <div class='requests-received'>
   <h1>Requests received</h1>
-  <ul class="list-unstyled">
+  <ul class="list-unstyled-received">
     <% @user.spaces.requests.each do |request| %>
       <li>
         <div id="space">
           <p class='header'><b><%= request.space.name %></b></p>
+          <p>Date Requested: <%= request.date_requested.strftime("%d %B, %Y") %></p>
+          <p>Status: <%= request.status.to_s.capitalize %></p>
+          <a href="/requests/<%=request.id%>"><button>Details</button></a>
         </div>
       </li>
     <% end %>
@@ -15,13 +18,14 @@
 
 <div class='requests-made'>
   <h1>Requests made</h1>
-  <ul class="list-unstyled">
+  <ul class="list-unstyled-made">
     <% @user.requests.each do |request| %>
       <li>
         <div id="space">
           <p class='header'><b><%= request.space.name %></b></p>
-          <p>Owner: <%= request.space.user.email %></p>
-          <p>Rentee: <%= request.user.email %></p>
+          <p>Date Requested: <%= request.date_requested.strftime("%d %B, %Y") %></p>
+          <p>Status: <%= request.status.to_s.capitalize %></p>
+          <a href="/requests/<%=request.id%>"><button>Details</button></a>
         </div>
       </li>
     <% end %>
