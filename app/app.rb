@@ -76,8 +76,17 @@ class MakersBnB < Sinatra::Base
 
   get '/spaces/:id' do
     @space = Space.first(id: params[:id])
-    erb(:'spaces/details')
+    erb(:'spaces/space')
   end
+
+  post '/requests/new' do
+    @user = current_user
+    space = Space.first(id: params[:id])
+    request = space.requests.create(date_requested: params[:date_requested], user: @user)
+    redirect '/requests/view'
+  end
+
+
 
   # start the server if ruby file executed directly
   run! if app_file == $0

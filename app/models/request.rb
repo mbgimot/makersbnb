@@ -9,12 +9,6 @@ class Request
   belongs_to :user
   belongs_to :space
 
-  # def owner
-  #   space.user
-  # end
-  #
-  # def requester
-  #   user
-  # end
+
 
 end
