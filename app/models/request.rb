@@ -7,9 +7,16 @@ class Request
   property :date_requested, DateTime
   property :created_at, DateTime
   property :status, :default => :pending
-  # property :owner - NEED TO FIGURE OUT!
 
   belongs_to :user
   belongs_to :space
+
+  # def owner
+  #   space.user
+  # end
+  #
+  # def requester
+  #   user
+  # end
 
 end
