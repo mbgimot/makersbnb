@@ -8,14 +8,14 @@ feature 'renter can request a space for one night' do
     list_space
   end
 
-  xscenario "cannot request to rent own property" do
+  scenario "cannot request to rent own property" do
     click_button('Details')
     fill_in(:date_requested, with:'2017-02-24')
     click_button('Request')
     expect(page).to have_content('Cannot request to book own property')
   end
 
-  xscenario "can request to rent someone else's property" do
+  scenario "can request to rent someone else's property" do
     click_button('Logout')
     # LOG IN AS DIFFERENT USER...
     click_button('Details')
@@ -24,7 +24,7 @@ feature 'renter can request a space for one night' do
     expect(page).to have_content('Cannot request to book own property')
   end
 
-  xscenario "can't rent a date that is not available" do
+  scenario "can't rent a date that is not available" do
     #...
   end
 
