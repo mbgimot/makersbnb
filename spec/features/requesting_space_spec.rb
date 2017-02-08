@@ -9,9 +9,7 @@ feature 'the user requests a space for one night and' do
   end
 
   scenario "can request to rent someone else's property" do
-    click_button('Logout')
-    sign_up('Bob', 'bob@bobmail.com', 'password', 'password')
-    sign_in('bob@bobmail.com', 'password')
+    change_user
     click_link('Details')
     fill_in(:date_requested, with:'2017-02-24')
     click_button('Request space')
@@ -26,9 +24,7 @@ feature 'the user requests a space for one night and' do
   end
 
   scenario "cannot rent a date that is not available" do
-    click_button('Logout')
-    sign_up('Bob', 'bob@bobmail.com', 'password', 'password')
-    sign_in('bob@bobmail.com', 'password')
+    change_user
     click_link('Details')
     fill_in(:date_requested, with:'2017-02-20')
     click_button('Request space')
