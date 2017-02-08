@@ -9,5 +9,6 @@ class Space
   property :date_available, DateTime
 
   belongs_to :user
+  has n, :requests
 
 end
