@@ -1,5 +1,4 @@
 require 'spec_helper'
-include SessionHelpers
 
 feature 'sign in' do
   before(:each) do
