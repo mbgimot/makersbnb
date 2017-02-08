@@ -80,15 +80,10 @@ class MakersBnB < Sinatra::Base
   end
 
   post '/requests/new' do
-    space = params[:space]
-    p params
-    if params[:date_requested] == @space.date_available
-      request = space.requests.create(date_requested: params[:date_requested], user: @current_user)
-      flash.next[:request_sent] = ['Your request has been sent to the owner.']
-      redirect '/requests/view'
-    else
-      flash.now[:errors] = ['The selected date is not available.']
-    end
+    @user = current_user
+    space = Space.first(id: params[:id])
+    request = space.requests.create(date_requested: params[:date_requested], user: @user)
+    redirect '/requests/view'
   end
 
 

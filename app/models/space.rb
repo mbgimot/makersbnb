@@ -6,7 +6,7 @@ class Space
   property :description, Text, :length => 500, :required => true
   property :price, Float, :precision => 5, :scale => 2, :required => true
   property :availability, Boolean, :default => true
-  property :date_available, Date
+  property :date_available, DateTime
 
   belongs_to :user
   has n, :requests
