@@ -17,6 +17,7 @@ class MakersBnB < Sinatra::Base
   helpers Helpers
 
   get '/' do
+    @spaces = Space.all.reverse
     erb(:index)
   end
 
