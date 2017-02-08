@@ -1,1 +1,20 @@
-<%= @request.id %>
+<h1>Request for <%=@space.name %></h1>
+
+<p>From: <%= @rentee.name %></p>
+<p>Date: <%= @booking.date_requested.strftime("%d %B, %Y") %></p>
+
+<h3>Other Requests for this space</h3>
+
+<% @space.requests.each do |request| %>
+  <% next if request == @booking %>
+  <li>
+    <div id="request">
+      <p>Requestor: <%=request.user_id%></p>
+      <p>Status: <%=request.status.to_s.capitalize%></p>
+      <p>Date: <%=request.date_requested.strftime("%d %B, %Y")%></p>
+      <a href="/requests/<%=request.id%>"><button>See Request</button></a>
+    </div>
+  </li>
+<% end %>
+</ul>
+</div>

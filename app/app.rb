@@ -84,17 +84,19 @@ class MakersBnB < Sinatra::Base
     erb(:'requests/view')
   end
 
-  get '/requests/:id' do
-    p session[:user_id]
-    @request = Request.first(id: params[:id])
-    erb(:'requests/request')
-  end
-
   post '/requests/new' do
     @user = current_user
     space = Space.first(id: params[:id])
     request = space.requests.create(date_requested: params[:date_requested], user: @user)
     redirect '/requests/view'
+  end
+
+  get '/requests/:id' do
+    @booking = Request.first(id: params[:id])
+    @space = Space.first(id: @booking.space_id)
+    @rentee = User.first(id: @booking.user_id)
+    @owner = User.first(id: @space.user_id)
+    erb(:'requests/request')
   end
 
 
