@@ -76,8 +76,22 @@ class MakersBnB < Sinatra::Base
 
   get '/spaces/:id' do
     @space = Space.first(id: params[:id])
-    erb(:'spaces/details')
+    erb(:'spaces/space')
   end
+
+  post '/requests/new' do
+    space = params[:space]
+    p params
+    if params[:date_requested] == @space.date_available
+      request = space.requests.create(date_requested: params[:date_requested], user: @current_user)
+      flash.next[:request_sent] = ['Your request has been sent to the owner.']
+      redirect '/requests/view'
+    else
+      flash.now[:errors] = ['The selected date is not available.']
+    end
+  end
+
+
 
   # start the server if ruby file executed directly
   run! if app_file == $0
