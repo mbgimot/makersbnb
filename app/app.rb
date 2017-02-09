@@ -13,10 +13,11 @@ class MakersBnB < Sinatra::Base
   use Rack::MethodOverride
   use Rack::Session::EncryptedCookie,
     secret: '1ad3e5c2b617e329aad83a5749d133ea426070d31bd2e11f9f4df626f966a259'
-
   helpers Helpers
 
   get '/' do
+    p session[:user_id]
+    @current_user = current_user
     @spaces = Space.all.reverse
     erb(:index)
   end
@@ -41,7 +42,6 @@ class MakersBnB < Sinatra::Base
   end
 
   get '/sessions/new' do
-    puts "GETTING HERE!"
     erb(:'sessions/new')
   end
 

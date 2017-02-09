@@ -17,7 +17,17 @@ namespace :db do
 
   desc "Destructive upgrade"
   task :auto_migrate do
-  DataMapper.auto_migrate!
-  puts "Auto-migrate complete (data was lost)"
+    DataMapper.auto_migrate!
+    puts "Auto-migrate complete (data was lost)"
+  end
+end
+
+namespace :authenticate do
+  desc "logout"
+  task :logout do
+    session[:user_id] = nil
+    session[:email] = nil
+    session[:name] = nil
+    puts "User logged out"
   end
 end

@@ -11,6 +11,7 @@ gem 'bcrypt'
 gem 'pry'
 gem 'dm-transactions'
 gem 'encrypted_cookie'
+gem 'pg'
 
 
 group :test do
