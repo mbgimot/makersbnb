@@ -1,3 +1,50 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+   <div class="container-fluid">
+      <div class="navbar-header">
+         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+         <span class="sr-only">Toggle navigation</span>
+         </button>
+         <a class="navbar-brand" href="#">CabinBnB</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+         <ul class="nav navbar-nav navbar-right">
+           <% if session[:user_id] %>
+              <li id="user-name">Logged in as <%= current_user.name %></li>
+              <li>
+                  <p class="navbar-btn">
+                      <a href="/spaces/view" class="btn btn-default">Spaces</a>
+                  </p>
+              </li>
+              <li>
+                  <p class="navbar-btn">
+                      <a href="/requests/view" class="btn btn-default">Requests</a>
+                  </p>
+              </li>
+              <li>
+                  <p class="navbar-btn">
+                    <form method='post' action='/sessions'>
+                       <input type='hidden' name='_method' value='delete'>
+                       <input class="btn btn-default" type='submit' value='Logout'>
+                    </form>
+                  </p>
+              </li>
+            <% else %>
+              <li>
+                  <p class="navbar-btn">
+                      <a href="/sessions/new" class="btn btn-default">Log in</a>
+                  </p>
+              </li>
+              <li>
+                  <p class="navbar-btn">
+                      <a href="/users/new" class="btn btn-default">Sign up</a>
+                  </p>
+              </li>
+            <% end %>
+         </ul>
+      </div>
+   </div>
+</nav>
+
 <div class="row">
   <div class="jumbotron landing-cabin">
     <div class="container-fluid">

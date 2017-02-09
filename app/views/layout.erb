@@ -22,7 +22,7 @@
                <ul class="nav navbar-nav navbar-right">
 
                  <% if session[:user_id] %>
-                    <li id="user-name"><%= User.get(session[:user_id]).name %></li>
+                    <li id="user-name">Logged in as <%= User.get(session[:user_id]).name %></li>
                     <li>
                         <p class="navbar-btn">
                             <a href="/spaces/view" class="btn btn-default">Spaces</a>
@@ -39,11 +39,19 @@
                              <input type='hidden' name='_method' value='delete'>
                              <input class="btn btn-default" type='submit' value='Logout'>
                           </form>
-                        </p>
+                      </p>
                     </li>
                   <% else %>
-                    <li><a href="/sessions/new">Log in</a></li>
-                    <li><a href="/users/new">Sign up</a></li>
+                    <li>
+                        <p class="navbar-btn">
+                            <a href="/sessions/new" class="btn btn-default">Log in</a>
+                        </p>
+                    </li>
+                    <li>
+                        <p class="navbar-btn">
+                            <a href="/users/new" class="btn btn-default">Sign up</a>
+                        </p>
+                    </li>
                   <% end %>
 
 
@@ -54,7 +62,7 @@
 
 
 
-      <div class="container-fluid"</div>
+      <div class="container-fluid">
 
         <article class='layout' style="font-family: arial">
            <% if flash[:notice] %>
@@ -74,6 +82,7 @@
            <%end%>
            <%= yield %>
         </article>
+        
       </div>
    </body>
 </html>
