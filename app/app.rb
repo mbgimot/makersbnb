@@ -80,6 +80,8 @@ class MakersBnB < Sinatra::Base
 
   get '/spaces/:id' do
     @space = Space.first(id: params[:id])
+    @to = @space.available_to.strftime("%d/%m/%Y")
+    @from = @space.available_from.strftime("%d/%m/%Y")
     erb(:'spaces/space')
   end
 
