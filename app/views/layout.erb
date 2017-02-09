@@ -23,7 +23,7 @@
 
 
                  <% if session[:user_id] %>
-      
+                    <li id="user-name"><%= User.get(session[:user_id]).name %></li>
                     <li>
                         <p class="navbar-btn">
                             <a href="/spaces/view" class="btn btn-default">Spaces</a>

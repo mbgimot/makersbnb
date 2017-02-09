@@ -17,6 +17,7 @@ class MakersBnB < Sinatra::Base
   helpers Helpers
 
   get '/' do
+    p session[:user_id]
     @current_user = current_user
     @spaces = Space.all.reverse
     erb(:index)
@@ -42,7 +43,6 @@ class MakersBnB < Sinatra::Base
   end
 
   get '/sessions/new' do
-    puts "GETTING HERE!"
     erb(:'sessions/new')
   end
 
