@@ -58,15 +58,11 @@ class MakersBnB < Sinatra::Base
   end
 
   delete '/sessions' do
-    logout
-    flash.keep[:notice] = "Goodbye!"
-    redirect to '/'
-  end
-
-  def logout
     session[:user_id] = nil
     session[:email] = nil
     session[:name] = nil
+    flash.keep[:notice] = "Goodbye!"
+    redirect to '/'
   end
 
   get '/spaces/view' do

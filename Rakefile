@@ -25,7 +25,9 @@ end
 namespace :authenticate do
   desc "logout"
   task :logout do
-    logout
+    session[:user_id] = nil
+    session[:email] = nil
+    session[:name] = nil
     puts "User logged out"
   end
 end
