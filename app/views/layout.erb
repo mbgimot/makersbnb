@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+   <head>
+     <title>MakersBnB</title>
+     <link href='/bootstrap-3.3.7/css/bootstrap.min.css' rel='stylesheet'>
+     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Montserrat+Subrayada" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200" rel="stylesheet">
+     <link href='/css/cabinstyle.css' rel='stylesheet'>
+   </head>
+
+   <body>
+
+      <div class="container-fluid"</div>
+
+        <article class='layout' style="font-family: arial">
+           <% if flash[:notice] %>
+           <div id='notice'>
+              <%= flash[:notice] %>
+           </div>
+           <% end %>
+           <% if flash[:errors] && !flash[:errors].empty? %>
+           Sorry, there was a problem:
+           <ul id="errors">
+              <% flash[:errors].each do |error| %>
+              <li>
+                 <%=error%>
+              </li>
+              <%end%>
+           </ul>
+           <%end%>
+           <%= yield %>
+        </article>
+      </div>
+   </body>
+</html>
