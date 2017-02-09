@@ -15,13 +15,13 @@ feature 'sign in' do
     end
     scenario 'welcome message is displayed' do
       sign_in('test@test.com', 'password')
-      expect(page).to have_content('Welcome, name')
+      expect(page).to have_content('Logged in as name')
     end
   end
   context 'invalid sign in' do
     scenario 'user cant sign in' do
       sign_in('test@test.com', 'password2')
-      expect(current_path).to eq('/')
+      expect(current_path).to eq('/sessions/new')
     end
     scenario 'error message is displayed' do
       sign_in('test@test.com', 'password2')

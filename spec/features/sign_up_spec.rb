@@ -13,7 +13,7 @@ feature 'sign up form' do
       scenario 'can sign up' do
         sign_up('name', 'test@test.com', 'password', 'password')
         expect(current_path).to eq('/spaces/view')
-        expect(page).to have_content("Welcome, name")
+        expect(page).to have_content("Logged in as name")
       end
 
       scenario 'signing up increases user count' do
@@ -21,7 +21,7 @@ feature 'sign up form' do
       end
 
       scenario "is empty" do
-        expect{sign_up('name', 'test@test.com', nil, 'password')}.to change{User.count}.by(0)
+        expect{sign_up('name', 'test@test.com', "", 'password')}.to change{User.count}.by(0)
       end
     end
 
@@ -31,7 +31,7 @@ feature 'sign up form' do
       end
 
       scenario "is empty" do
-        expect{sign_up('name', 'test@test.com', 'password', nil)}.to change{User.count}.by(0)
+        expect{sign_up('name', 'test@test.com', 'password', "")}.to change{User.count}.by(0)
       end
 
       scenario "leaves user on /users page" do
