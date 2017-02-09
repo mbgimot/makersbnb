@@ -9,10 +9,11 @@
     <% @spaces.each do |space| %>
       <li>
         <div id="space">
+          <img src="/uploads/<%= space.image %>">
           <p class='header'><b><%= space.name %></b></p>
           <p class='content'><%= space.description %></p>
           <p class='price'>£<%= space.price %> per night</p>
-          <a href="/spaces/<%=space.id%>"><button>Details</button></a>
+          <a href="/spaces/<%= space.id %>"><button>Details</button></a>
         </div>
       </li>
     <% end %>
