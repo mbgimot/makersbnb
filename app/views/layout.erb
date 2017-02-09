@@ -1,37 +1,71 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>MakersBnB</title>
-  </head>
+   <head>
+     <title>MakersBnB</title>
+     <link rel='stylesheet' href='/bootstrap-3.3.7/css/bootstrap.min.css'>
+     <link rel='stylesheet' href='/stylesheet.css'>
+   </head>
 
-  <body>
-    <% if session[:user_id] %>
-      <form method='post' action='/sessions'>
-        <input type='hidden' name='_method' value='delete'>
-        <input type='submit' value='Logout'>
-      </form>
-      <a href="/requests/view"><button>Requests</button></a>
-    <% end %>
+   <body>
 
-    <article class='layout' style="font-family: arial">
-      <% if flash[:notice] %>
-        <div id='notice'>
-          <%= flash[:notice] %>
-        </div>
-      <% end %>
-      <% if flash[:errors] && !flash[:errors].empty? %>
-        Sorry, there was a problem:
-        <ul id="errors">
-          <% flash[:errors].each do |error| %>
-          <li>
-            <%=error%>
-          </li>
-          <%end%>
-        </ul>
-      <%end%>
-      <%= yield %>
-    </article>
+      <nav class="navbar navbar-default navbar-fixed-top">
+         <div class="container">
+            <div class="navbar-header">
+               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+               <span class="sr-only">Toggle navigation</span>
+               </button>
+               <a class="navbar-brand" href="#">MakersBnB</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+               <ul class="nav navbar-nav">
+                  <% if session[:user_id] %>
+                  <li><a href="/spaces/view">Spaces</a></li>
+                  <li><a href="/requests/view">Requests</a></li>
+                  <% end %>
+               </ul>
+               <ul class="nav navbar-nav navbar-right">
+                  <% if session[:user_id] %>
+                  <li>
+                    <% if current_user %>
+                      Logged in as <%= current_user.name %>
+                    <% end %>
+                  </li>
+                  <li>
+                     <form method='post' action='/sessions'>
+                        <input type='hidden' name='_method' value='delete'>
+                        <input type='submit' value='Logout'>
+                     </form>
+                  </li>
+                  <% else %>
+                  <li><a href="/sessions/new">Log in</a></li>
+                  <li><a href="/users/new">Sign up</a></li>
+                  <% end %>
+               </ul>
+            </div>
+         </div>
+      </nav>
 
-  </body>
+      <article class='layout' style="font-family: arial">
+         <% if flash[:notice] %>
+         <div id='notice'>
+            <%= flash[:notice] %>
+         </div>
+         <% end %>
+         <% if flash[:errors] && !flash[:errors].empty? %>
+         Sorry, there was a problem:
+         <ul id="errors">
+            <% flash[:errors].each do |error| %>
+            <li>
+               <%=error%>
+            </li>
+            <%end%>
+         </ul>
+         <%end%>
+         <%= yield %>
+      </article>
+
+      <!-- <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script> -->
+      <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script> -->
+      <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script> -->
+   </body>
 </html>

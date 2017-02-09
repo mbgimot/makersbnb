@@ -1,30 +1,18 @@
-<h1> Welcome to MakersBnB! </h1>
+<div class="jumbotron">
+  <h1>MakersBnB</h1>
+  <p>Your home away from home.</p>
+</div>
 
-  <form action='/users/existing' method='POST'>
-    <label for='email'>
-      Email:
-      <input type='text' name='email' pattern='[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$' value='<%=@email_res%>' required />
-    </label><br>
-    <label for='password'>
-      Password:
-      <input type='password' name='password' />
-    </label><br>
-    <input type='submit' value='Login'>
-  </form>
-  <form action='/users/new' method='GET'>
-    <input type='submit' value='Sign Up'>
-  </form>
-
-  <div class='spaces'>
-    <ul class="list-unstyled spaces">
-      <% @spaces.each do |space| %>
-        <li>
-          <div id="space">
-            <p class='header'><b><%= space.name %></b></p>
-            <p class='content'><%= space.description %></p>
-            <p class='price'>£<%= space.price %> per night</p>
-          </div>
-        </li>
-      <% end %>
-    </ul>
-  </div>
+<div class='spaces'>
+  <ul class="list-unstyled spaces">
+    <% @spaces.each do |space| %>
+      <li>
+        <div id="space">
+          <p class='header'><b><%= space.name %></b></p>
+          <p class='content'><%= space.description %></p>
+          <p class='price'>£<%= space.price %> per night</p>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>

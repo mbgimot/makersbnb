@@ -40,6 +40,11 @@ class MakersBnB < Sinatra::Base
     end
   end
 
+  get '/sessions/new' do
+    puts "GETTING HERE!"
+    erb(:'sessions/new')
+  end
+
   post '/users/existing' do
     user = User.authenticate(params[:email], params[:password])
     if user
@@ -47,7 +52,7 @@ class MakersBnB < Sinatra::Base
       redirect '/spaces/view'
     else
       flash[:errors] = ['The email or password is incorrect.']
-      redirect '/'
+      redirect '/sessions/new'
     end
   end
 
@@ -88,7 +93,7 @@ class MakersBnB < Sinatra::Base
     @user = current_user
     space = Space.first(id: params[:id])
     booking_date = params[:date_requested]
-    if @user == space.user
+    if @user.id == space.user_id
       flash.now[:cannot_book_own_space] = ["Cannot request to book own property"]
     elsif booking_date != space.date_available.strftime("%Y-%m-%d")
       flash.now[:request_not_sent] = ["The selected date is not available"]

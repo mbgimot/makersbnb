@@ -1,0 +1,11 @@
+<form action='/users/existing' method='POST'>
+  <label for='email'>
+    Email:
+    <input type='text' name='email' pattern='[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$' value='<%=@email_res%>' required />
+  </label><br>
+  <label for='password'>
+    Password:
+    <input type='password' name='password' />
+  </label><br>
+  <input type='submit' value='Login'>
+</form>
