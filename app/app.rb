@@ -92,6 +92,7 @@ class MakersBnB < Sinatra::Base
   end
 
   get '/requests/:id' do
+    @user = current_user
     @booking = Request.first(id: params[:id])
     @space = Space.first(id: @booking.space_id)
     @rentee = User.first(id: @booking.user_id)
@@ -99,7 +100,15 @@ class MakersBnB < Sinatra::Base
     erb(:'requests/request')
   end
 
-
+  put '/requests/ammend' do
+    booking = Request.first(id: params[:id])
+    if params[:confirm]
+      booking.update(status: :confirmed)
+    elsif params[:decline]
+      booking.update(status: :declined)
+    end
+    redirect '/requests/view'
+  end
 
   # start the server if ruby file executed directly
   run! if app_file == $0
