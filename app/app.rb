@@ -84,12 +84,6 @@ class MakersBnB < Sinatra::Base
     erb(:'requests/view')
   end
 
-  get '/requests/:id' do
-    p session[:user_id]
-    @request = Request.first(id: params[:id])
-    erb(:'requests/request')
-  end
-
   post '/requests/new' do
     @user = current_user
     space = Space.first(id: params[:id])
@@ -103,6 +97,25 @@ class MakersBnB < Sinatra::Base
       flash.next[:request_sent] = ["Your request has been sent to the owner"]
       redirect '/requests/view'
     end
+  end
+
+  get '/requests/:id' do
+    @user = current_user
+    @booking = Request.first(id: params[:id])
+    @space = Space.first(id: @booking.space_id)
+    @rentee = User.first(id: @booking.user_id)
+    @owner = User.first(id: @space.user_id)
+    erb(:'requests/request')
+  end
+
+  put '/requests/ammend' do
+    booking = Request.first(id: params[:id])
+    if params[:confirm]
+      booking.update(status: :confirmed)
+    elsif params[:decline]
+      booking.update(status: :declined)
+    end
+    redirect '/requests/view'
   end
 
   # start the server if ruby file executed directly
