@@ -1,16 +1,43 @@
 body {
   min-height: 2000px;
   padding-top: 140px;
-  font-family: 'Josefin Sans', sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
 .landing-cabin {
   padding-top: 30px;
   padding-bottom: 30px;
   margin-bottom: 30px;
-  color: inherit;
-  background-color: #eee;
-  background-image: url('/images/landing_cabin.jpg') !important;
+  background-image: url('/images/landing_cabin.jpg');
+  opacity: 0.8;
   background-size: cover;
   background-repeat: no-repeat;
+  height: 500px;
+}
+
+.navbar-nav>li>a {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 2em;
+}
+
+.container-fluid .jumbotron {
+  border-radius: 0px;
+}
+
+.navbar-brand {
+  font-family: 'Montserrat Subrayada', sans-serif;
+  font-size: 48px;
+}
+
+.tagline {
+  font-size: 4em !important;
+  color: #FFFFFF;
+}
+
+.navbar-btn {
+  margin-left: 5px;
+}
+
+#user-name {
+  
 }
