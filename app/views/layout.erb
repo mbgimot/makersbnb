@@ -10,6 +10,34 @@
 
    <body>
 
+                 <% if session[:user_id] %>
+                    <li id="user-name"><%= @current_user.name %></li>
+                    <li>
+                        <p class="navbar-btn">
+                            <a href="/spaces/view" class="btn btn-default">Spaces</a>
+                        </p>
+                    </li>
+                    <li>
+                        <p class="navbar-btn">
+                            <a href="/requests/view" class="btn btn-default">Requests</a>
+                        </p>
+                    </li>
+                    <li>
+                        <p class="navbar-btn">
+                          <form method='post' action='/sessions'>
+                             <input type='hidden' name='_method' value='delete'>
+                             <input class="btn btn-default" type='submit' value='Logout'>
+                          </form>
+                        </p>
+                    </li>
+                  <% else %>
+                    <li><a href="/sessions/new">Log in</a></li>
+                    <li><a href="/users/new">Sign up</a></li>
+                  <% end %>
+               </ul>
+
+
+
       <div class="container-fluid"</div>
 
         <article class='layout' style="font-family: arial">
