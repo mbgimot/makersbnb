@@ -6,7 +6,7 @@
     <% @user.spaces.requests.each do |request| %>
       <li>
         <div id="space">
-          <p class='header'><b><%= request.space.name %></b></p>
+          <p class='header'>Request From: <b><%= request.user.name %></b></p>
           <p>Date Requested: <%= request.date_requested.strftime("%d %B, %Y") %></p>
           <p>Status: <%= request.status.to_s.capitalize %></p>
           <a href="/requests/<%=request.id%>"><button>Details</button></a>
