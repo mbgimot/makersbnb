@@ -1,0 +1,16 @@
+body {
+  min-height: 2000px;
+  padding-top: 140px;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.landing-cabin {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  margin-bottom: 30px;
+  color: inherit;
+  background-color: #eee;
+  background-image: url('/images/landing_cabin.jpg') !important;
+  background-size: cover;
+  background-repeat: no-repeat;
+}

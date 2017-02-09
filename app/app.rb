@@ -8,7 +8,7 @@ require_relative 'helpers'
 
 
 class MakersBnB < Sinatra::Base
-  set :public_folder, Proc.new { File.join(root, 'static') }
+
   register Sinatra::Flash
   use Rack::MethodOverride
   use Rack::Session::EncryptedCookie,
