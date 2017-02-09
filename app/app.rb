@@ -16,7 +16,6 @@ class MakersBnB < Sinatra::Base
   helpers Helpers
 
   get '/' do
-    p session[:user_id]
     @current_user = current_user
     @spaces = Space.all.reverse
     erb(:index)
@@ -75,7 +74,7 @@ class MakersBnB < Sinatra::Base
 
   post '/spaces/new' do
     user = User.get(session[:user_id])
-    space = user.spaces.create(name: params[:name], description: params[:description], price: params[:price], availability: params[:availability], date_available: params[:date_available])
+    space = user.spaces.create(name: params[:name], description: params[:description], price: params[:price], available_from: params[:available_from], available_to: params[:available_to])
     redirect '/spaces/view'
   end
 
@@ -95,8 +94,6 @@ class MakersBnB < Sinatra::Base
     booking_date = params[:date_requested]
     if @user.id == space.user_id
       flash.now[:cannot_book_own_space] = ["Cannot request to book own property"]
-    elsif booking_date != space.date_available.strftime("%Y-%m-%d")
-      flash.now[:request_not_sent] = ["The selected date is not available"]
     else
       request = space.requests.create(date_requested: params[:date_requested], user: @user)
       flash.next[:request_sent] = ["Your request has been sent to the owner"]

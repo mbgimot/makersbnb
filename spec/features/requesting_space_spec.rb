@@ -5,7 +5,7 @@ feature 'the user requests a space for one night and' do
   before(:each) do
     sign_up_true
     visit('/spaces/view')
-    list_space
+    list_space_one
   end
 
   scenario "can request to rent someone else's property" do
@@ -22,13 +22,4 @@ feature 'the user requests a space for one night and' do
     click_button('Request space')
     expect(page).to have_content('Cannot request to book own property')
   end
-
-  scenario "cannot rent a date that is not available" do
-    change_user
-    click_link('Details')
-    fill_in(:date_requested, with:'2017-02-20')
-    click_button('Request space')
-    expect(page).to have_content('The selected date is not available')
-  end
-
 end
