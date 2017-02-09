@@ -22,8 +22,8 @@
                <ul class="nav navbar-nav navbar-right">
 
 
-
-                    <li id="user-name"><%= @current_user.name %></li>
+                 <% if session[:user_id] %>
+                   
                     <li>
                         <p class="navbar-btn">
                             <a href="/spaces/view" class="btn btn-default">Spaces</a>
@@ -42,10 +42,10 @@
                           </form>
                         </p>
                     </li>
-
+                  <% else %>
                     <li><a href="/sessions/new">Log in</a></li>
                     <li><a href="/users/new">Sign up</a></li>
-
+                  <% end %>
 
 
                </ul>
