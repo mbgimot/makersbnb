@@ -27,6 +27,12 @@ def sign_up_true
   click_button 'Sign Up'
 end
 
+def change_user
+  click_button('Logout')
+  sign_up('Bob', 'bob@bobmail.com', 'password', 'password')
+  sign_in('bob@bobmail.com', 'password')
+end
+
 def list_space
   click_link('List a space')
   fill_in(:name, with: 'House by the sea')

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature 'renter can request a space for one night' do
+feature 'the user requests a space for one night and' do
 
   before(:each) do
     sign_up_true
@@ -8,24 +8,27 @@ feature 'renter can request a space for one night' do
     list_space
   end
 
-  scenario "cannot request to rent own property" do
-    click_button('Details')
-    fill_in(:date_requested, with:'2017-02-24')
-    click_button('Request')
-    expect(page).to have_content('Cannot request to book own property')
-  end
-
   scenario "can request to rent someone else's property" do
-    click_button('Logout')
-    # LOG IN AS DIFFERENT USER...
-    click_button('Details')
+    change_user
+    click_link('Details')
     fill_in(:date_requested, with:'2017-02-24')
-    click_button('Request')
+    click_button('Request space')
+    expect(page).to have_content('Your request has been sent to the owner')
+  end
+
+  scenario "cannot request to rent own property" do
+    click_link('Details')
+    fill_in(:date_requested, with:'2017-02-24')
+    click_button('Request space')
     expect(page).to have_content('Cannot request to book own property')
   end
 
-  scenario "can't rent a date that is not available" do
-    #...
+  scenario "cannot rent a date that is not available" do
+    change_user
+    click_link('Details')
+    fill_in(:date_requested, with:'2017-02-20')
+    click_button('Request space')
+    expect(page).to have_content('The selected date is not available')
   end
 
 end

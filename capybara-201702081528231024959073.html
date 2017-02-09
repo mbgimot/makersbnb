@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>MakersBnB</title>
+  </head>
+
+  <body>
+    
+      <form method='post' action='/sessions'>
+        <input type='hidden' name='_method' value='delete'>
+        <input type='submit' value='Logout'>
+      </form>
+      <a href="/requests/view"><button>Requests</button></a>
+    
+
+    <article class='layout' style="font-family: arial">
+      
+      
+      <div>
+House by the sea<br>
+Betty<br>
+Lovely two-bed apartment overlooking the sea.<br>
+35.0<br>
+</div>
+
+<div>
+  <p>Date available: 24 February, 2017 </p>
+</div>
+
+<form action='/requests/new' method='POST'>
+
+  <input type="date" name="date_requested" value='2017-02-24'>
+  <input type='hidden' name='id' value='7'>
+
+<button type="submit" value='request'>Request space</button>
+
+</form>
+
+    </article>
+
+  </body>
+</html>

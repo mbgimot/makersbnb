@@ -1,3 +1,11 @@
+<h3><%if flash[:request_not_sent]%></h3>
+<h3> <%=flash[:request_not_sent]%></h3>
+<%end%>
+
+<h3><%if flash[:cannot_book_own_space]%></h3>
+<h3> <%=flash[:cannot_book_own_space]%></h3>
+<%end%>
+
 <div>
 <%= @space.name %><br>
 <%= @space.user.name %><br>
@@ -6,12 +14,12 @@
 </div>
 
 <div>
-  <p>Date available: <%= @space.date_available %> </p>
+  <p>Date available: <%= @space.date_available.strftime("%d %B, %Y") %> </p>
 </div>
 
 <form action='/requests/new' method='POST'>
 
-  <input type="date" name="date_requested" value='<%= @space.date_available %>'>
+  <input type="date" name="date_requested" value='<%= @space.date_available.strftime("%Y-%m-%d") %>'>
   <input type='hidden' name='id' value='<%= @space.id %>'>
 
 <button type="submit" value='request'>Request space</button>
