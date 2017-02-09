@@ -8,12 +8,12 @@ require_relative 'helpers'
 
 
 class MakersBnB < Sinatra::Base
-  session[:user_id] = 0
+
   register Sinatra::Flash
   use Rack::MethodOverride
   use Rack::Session::EncryptedCookie,
     secret: '1ad3e5c2b617e329aad83a5749d133ea426070d31bd2e11f9f4df626f966a259'
-
+  session[:user_id] = 0
   helpers Helpers
 
   get '/' do
