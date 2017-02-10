@@ -101,8 +101,6 @@ GEM
     rack (1.6.5)
     rack-protection (1.5.3)
       rack
-    rack-raw-upload (1.1.1)
-      multi_json
     rack-test (0.6.3)
       rack (>= 1.0)
     rainbow (2.2.1)
@@ -173,7 +171,6 @@ DEPENDENCIES
   orderly
   pg
   pry
-  rack-raw-upload
   rake
   rspec
   rspec-sinatra
