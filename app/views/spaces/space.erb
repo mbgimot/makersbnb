@@ -1,5 +1,5 @@
-<h3><%if flash[:request_not_sent]%></h3>
-<h3> <%=flash[:request_not_sent]%></h3>
+<%if flash[:request_not_sent]%>
+    <h3> <%=flash[:request_not_sent]%></h3>
 <%end%>
 
 <h3><%if flash[:cannot_book_own_space]%></h3>

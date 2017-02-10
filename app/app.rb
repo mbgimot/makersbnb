@@ -112,7 +112,7 @@ class MakersBnB < Sinatra::Base
       flash.now[:cannot_book_own_space] = ["Cannot request to book own property"]
     else
       request = space.requests.create(date_requested: params[:date], user: @user)
-      flash.next[:request_sent] = ["Your request has been sent to the owner"]
+      flash[:request_sent] = "Your request has been sent to the owner"
       redirect '/requests/view'
     end
   end
