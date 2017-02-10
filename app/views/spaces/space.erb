@@ -22,7 +22,7 @@
     <form action='/requests/new' method='POST'>
       <div class="form-group row">
         <label class="col-12 text-center mb-0 label-line-height" for='date'>Staying the Night Of</label>
-        <div class="col-12" id='space_datepicker' data-date-start-date=<%= @from %> data-date-end-date=<%= @to %> data-date-dates-disabled='<%= @space.confirmed_dates %>'>
+        <div class="col-12" id='space_datepicker' data-date-start-date='<%= @from %>' data-date-end-date='<%= @to %>' data-date-dates-disabled='<%= @space.confirmed_dates %>'>
         </div>
         <input class="form-control col-12" type="hidden" name="date_requested" required>
         <input type='hidden' name='id' value='<%= @space.id %>'>
