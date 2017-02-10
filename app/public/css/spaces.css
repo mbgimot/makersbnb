@@ -2,6 +2,7 @@
   font-family: 'Caveat Brush', cursive;
   font-size: 78px;
   margin-left: 20%;
+  color: #044804;
 }
 
 .btn-spaces {
@@ -22,13 +23,6 @@
   padding: 10px;
   background: white;
 }
-
-/* Make the image fit the box */
-/*#boxshadow img {
-    width: 100%;
-    border: 1px solid #8a4419;
-    border-style: inset;
-}*/
 
 .spaces-jt::after {
     content: '';
