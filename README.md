@@ -1,6 +1,8 @@
 Makers BnB
 ===========
 
+Contributors: Kat, Edyta, Mica and Mitch
+
 ## User Stories
 
 ```
