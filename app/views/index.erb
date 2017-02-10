@@ -8,6 +8,9 @@
       </div>
       <div id="navbar" class="navbar-collapse collapse">
          <ul class="nav navbar-nav navbar-right">
+           <% if flash[:notice] %>
+              <li id="user-name"><%= flash[:notice] %></li>
+           <% end %>
            <% if session[:user_id] %>
               <li id="user-name">Logged in as <%= current_user.name %></li>
               <li>
