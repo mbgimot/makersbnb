@@ -2,13 +2,13 @@
 <html>
    <head>
      <title>MakersBnB</title>
-     
+
      <link href='/bootstrap-3.3.7/css/bootstrap.min.css' rel='stylesheet'>
-     
+
      <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Montserrat+Subrayada" rel="stylesheet">
      <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200" rel="stylesheet">
      <link href="https://fonts.googleapis.com/css?family=Caveat+Brush" rel="stylesheet">
-     
+
      <link href='/css/cabinstyle.css' rel='stylesheet'>
      <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
      <script type="text/javascript" src="/bootstrap-3.3.7/js/bootstrap.js"></script>
@@ -77,7 +77,7 @@
         <article class='layout' style="font-family: arial">
            <% if flash[:notice] %>
            <div id='notice'>
-              <%= flash[:notice] %>
+              <div class="alert alert-warning"><%= flash[:notice] %></div>
            </div>
            <% end %>
            <% if flash[:errors] && !flash[:errors].empty? %>
@@ -85,7 +85,7 @@
            <ul id="errors">
               <% flash[:errors].each do |error| %>
               <li>
-                 <%=error%>
+                 <div class="alert alert-warning"><%=error%></div>
               </li>
               <%end%>
            </ul>
@@ -95,5 +95,10 @@
 
       </div>
       <script src="/js/calendarEvents.js"></script>
+      <!-- jQuery library -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+      <!-- Latest compiled JavaScript -->
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
    </body>
 </html>
