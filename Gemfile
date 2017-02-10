@@ -13,7 +13,6 @@ gem 'dm-transactions'
 gem 'encrypted_cookie'
 gem 'pg'
 
-
 group :test do
   gem 'rspec'
   gem 'rubocop-rspec'

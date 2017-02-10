@@ -1,9 +1,6 @@
-<html>
-<body>
-
 <h1> Enter the details of your space </h1>
 
-<form name ='list_space' action='/spaces/new' method='post'>
+<form name ='list_space' action='/spaces/new' method='post' enctype="multipart/form-data">
   <label for='name'>
     Name of space <br />
   <input type="text" name="name"><br />
@@ -19,9 +16,9 @@
   <label for='available_from'>
     Select available to date <br/>
   <input type="date" name="available_to"/><br/>
-
+  <label for="file">
+    <span class="label">Upload image:</span>
+    <input type="file" name="file">
+  </label>
   <button type="submit" value='Submit'>List space</button>
 </form>
-
-</body>
-</html>

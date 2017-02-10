@@ -73,8 +73,20 @@ class MakersBnB < Sinatra::Base
   end
 
   post '/spaces/new' do
+    @filename = params[:file][:filename]
+  	file = params[:file][:tempfile]
+
+  	File.open("./app/public/uploads/#{@filename}", "wb") do |f|
+  		 f.write(file.read)
+  	end
+
     user = User.get(session[:user_id])
-    space = user.spaces.create(name: params[:name], description: params[:description], price: params[:price], available_from: params[:available_from], available_to: params[:available_to])
+    space = user.spaces.create(name: params[:name],
+                               description: params[:description],
+                               price: params[:price],
+                               available_from: params[:available_from],
+                               available_to: params[:available_to],
+                               image: @filename)
     redirect '/spaces/view'
   end
 
