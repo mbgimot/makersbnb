@@ -73,21 +73,27 @@ class MakersBnB < Sinatra::Base
   end
 
   post '/spaces/new' do
-    @filename = params[:file][:filename]
-  	file = params[:file][:tempfile]
+    if (params[:file]).nil?
+      flash.next[:upload_photo] = "You need to upload a photo to create a space"
+      redirect '/spaces/new'
+    elsif params[:decline]
+      booking.update(status: :declined)
+      @filename = params[:file][:filename]
+    	file = params[:file][:tempfile]
 
-  	File.open("./app/public/uploads/#{@filename}", "wb") do |f|
-  		 f.write(file.read)
-  	end
+    	File.open("./app/public/uploads/#{@filename}", "wb") do |f|
+    		 f.write(file.read)
+    	end
 
-    user = User.get(session[:user_id])
-    space = user.spaces.create(name: params[:name],
-                               description: params[:description],
-                               price: params[:price],
-                               available_from: params[:available_from],
-                               available_to: params[:available_to],
-                               image: @filename)
-    redirect '/spaces/view'
+      user = User.get(session[:user_id])
+      space = user.spaces.create(name: params[:name],
+                                 description: params[:description],
+                                 price: params[:price],
+                                 available_from: params[:available_from],
+                                 available_to: params[:available_to],
+                                 image: @filename)
+      redirect '/spaces/view'
+    end
   end
 
   get '/spaces/:id' do

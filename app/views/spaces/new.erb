@@ -1,3 +1,7 @@
+<%if flash[:upload_photo]%>
+  <div class="alert alert-warning"><%=flash[:upload_photo]%></div>
+<%end%>
+
 <h2> Enter the details of your space </h2>
 
 <form name ='list_space' action='/spaces/new' method='post' enctype="multipart/form-data">
