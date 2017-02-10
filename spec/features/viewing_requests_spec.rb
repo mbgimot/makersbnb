@@ -13,11 +13,19 @@ feature 'viewing submitted and recieved requests' do
       password: 'password',
       password_conf: 'password'
     )
+
+@file = cabintest.png
+
+    File.open("./app/public/uploads/#{@file}", "wb") do |f|
+       f.write(file.read)
+    end
+
     space = owner.spaces.create(name: 'name',
       description: 'description',
       price: 90.00,
       available_from: '2017-02-10',
       available_to: '2017-02-11',
+      image: @file
     )
     request = space.requests.create(date_requested: '2017-02-10', user: rentee)
   end
@@ -26,7 +34,7 @@ feature 'viewing submitted and recieved requests' do
     sign_in('person@test.com', 'password')
 
     visit '/requests/view'
-    within 'ul.list-unstyled-made' do
+    within '.requests_received_box' do
       expect(page).to have_content('Date Requested: 10 February, 2017')
       expect(page).to have_content('Status: Pending')
     end
@@ -36,7 +44,7 @@ feature 'viewing submitted and recieved requests' do
     sign_in('test@test.com', 'password')
 
     visit '/requests/view'
-    within 'ul.list-unstyled-received' do
+    within '.requests-made' do
       expect(page).to have_content('Date Requested: 10 February, 2017')
       expect(page).to have_content('Status: Pending')
     end

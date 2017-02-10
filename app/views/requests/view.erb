@@ -18,6 +18,7 @@
                   <small>Recieved</small><br>
                 </h2>
                 <ul class="list-unstyled">
+                  <div class="requests_received_box">
                     <% @user.spaces.requests.each do |request| %>
                         <li>
                             <div class="request-box">
@@ -30,6 +31,7 @@
                             </div>
                         </li>
                     <% end %>
+                  </div>
                 </ul>
             </div>
         </div>

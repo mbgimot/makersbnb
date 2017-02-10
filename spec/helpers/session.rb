@@ -32,22 +32,24 @@ def change_user
 end
 
 def list_space_one
-  click_link('List a space')
+  click_link('Yes, please')
   fill_in(:name, with: 'House by the sea')
   fill_in(:description, with: 'Lovely two-bed apartment overlooking the sea.')
   fill_in(:price, with: '35.00')
   fill_in(:available_from, with:'2017-02-24')
   fill_in(:available_to, with:'2017-02-25')
+  attach_file('file', File.absolute_path('./app/public/images/cabintest.png'))
   click_button('List space')
 end
 
 def list_another_space_one
-  click_link('List a space')
+  click_link('Yes, please')
   fill_in(:name, with: 'Penthouse apartment')
   fill_in(:description, with: 'Incredible views from this top storey apartment in London')
   fill_in(:price, with: '100.00')
   fill_in(:available_from, with:'2017-02-24')
   fill_in(:available_to, with:'2017-02-25')
+  attach_file('file', File.absolute_path('./app/public/images/cabintest.png'))
   click_button('List space')
 end
 

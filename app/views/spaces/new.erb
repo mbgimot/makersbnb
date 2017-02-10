@@ -3,22 +3,22 @@
 <form name ='list_space' action='/spaces/new' method='post' enctype="multipart/form-data">
   <label for='name'>
     Name of space <br />
-  <input type="text" name="name"><br />
+  <input type="text" name="name" required ><br />
   <label for='description'>
     Description <br />
-  <input type="text" name="description" /><br />
+  <input type="text" name="description" required /><br />
   <label for='price'>
     Price per night (£)<br />
-  <input type="number" name="price" min="0.01" step="0.01" /><br />
+  <input type="number" name="price" min="0.01" step="0.01" required/><br />
   <label for='available_from'>
     Select available from date <br/>
-  <input type="date" name="available_from"/><br/>
+  <input type="date" name="available_from" required/><br/>
   <label for='available_from'>
     Select available to date <br/>
-  <input type="date" name="available_to"/><br/>
+  <input type="date" name="available_to" required/><br/>
   <label for="file">
     <span class="label">Upload image:</span>
-    <input type="file" name="file">
+    <input type="file" name="file" required>
   </label>
   <button type="submit" value='Submit'>List space</button>
 </form>
