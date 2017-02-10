@@ -1,21 +1,86 @@
+<div class="container">
+  <div class="jumbotron spaces-jt">
+    <h2 id="list-space">Want to list a space?</h2>
+    <a href="/spaces/new" class="btn btn-default btn-spaces">Yes, please</a>
+      <!-- <img id="logo-btn" src="/images/ok.ico"</a> -->
+  </div>
 
-<p>
-<a href="/spaces/new">List a space</a>
-
-<h1>Spaces</h1>
-
-<div class='spaces'>
-  <ul class="list-unstyled spaces">
-    <% @spaces.each do |space| %>
-      <li>
-        <div id="space">
-          <img src="/uploads/<%= space.image %>">
-          <p class='header'><b><%= space.name %></b></p>
-          <p class='content'><%= space.description %></p>
-          <p class='price'>£<%= space.price %> per night</p>
-          <a href="/spaces/<%= space.id %>"><button>Details</button></a>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="thumbnail">
+          <img src="/images/modern-camouflage-log-cabin.jpg" alt="modern" style="width:100%">
+          <div class="caption">
+            <p>Description</p>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="thumbnail">
+          <img src="/images/01-dolores-honeymoon.jpg" alt="dolores" style="width:100%">
+          <div class="caption">
+            <p>Description</p>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="thumbnail">
+          <img src="/images/6-Cozy-Cabins-Flathead-Lake-Cabin.jpg" alt="lake" style="width:100%">
+          <div class="caption">
+            <p>Description</p>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="thumbnail">
+            <img src="/images/961.jpg" alt="modern" style="width:100%">
+            <div class="caption">
+              <p>Description</p>
+            </div>
+          </a>
         </div>
-      </li>
-    <% end %>
-  </ul>
+      </div>
+      <div class="col-md-4">
+        <div class="thumbnail">
+            <img src="/images/blog.jpg" alt="dolores" style="width:100%">
+            <div class="caption">
+              <p>Description</p>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="thumbnail">
+            <img src="/images/images.jpg" alt="lake" style="width:100%">
+            <div class="caption">
+              <p>Description</p>
+            </div>
+          </a>
+        </div>
+      </div>
+  </div>
+
+  <div class='container-fluid highlights'>
+    <h3 class='subtitle'> Spaces </h3>
+    <div class='row'>
+      <ul class="list-unstyled spaces">
+        <% @spaces.each do |space| %>
+        <div class="col-md-3 col-xs-6">
+          <li>
+            <div id="space">
+              <img src="/uploads/<%= space.image %>">
+              <p class='header'><b><%= space.name %></b></p>
+              <p class='content'><%= space.description %></p>
+              <p class='price'>£<%= space.price %> per night</p>
+              <a href="/spaces/<%= space.id %>"><button>Details</button></a>
+            </div>
+          </li>
+        </div>
+        <% end %>
+      </ul>
+    </div>
+  </div>
 </div>
