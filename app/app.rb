@@ -93,11 +93,12 @@ class MakersBnB < Sinatra::Base
   post '/requests/new' do
     @user = current_user
     space = Space.first(id: params[:id])
-    booking_date = params[:date_requested]
+    p params[:date]
+    booking_date = params[:date]
     if @user.id == space.user_id
       flash.now[:cannot_book_own_space] = ["Cannot request to book own property"]
     else
-      request = space.requests.create(date_requested: params[:date_requested], user: @user)
+      request = space.requests.create(date_requested: params[:date], user: @user)
       flash.next[:request_sent] = ["Your request has been sent to the owner"]
       redirect '/requests/view'
     end

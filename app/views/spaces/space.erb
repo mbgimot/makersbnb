@@ -13,18 +13,14 @@
 <%= @space.price %><br>
 </div>
 
-<div>
-  <p>Date available from: <%= @space.available_from.strftime("%d %B, %Y") %> </p>
-  <p>Date available to: <%= @space.available_to.strftime("%d %B, %Y") %> </p>
-</div>
 <div class="row">
   <div class="col-12">
     <form action='/requests/new' method='POST'>
       <div class="form-group row">
         <label class="col-12 text-center mb-0 label-line-height" for='date'>Staying the Night Of</label>
-        <div class="col-12" id='space_datepicker' data-date-start-date='<%= @from %>' data-date-end-date='<%= @to %>' data-date-dates-disabled='<%= @space.confirmed_dates %>'>
+        <div class="col-12" id='space_datepicker' data-date-start-date=<%= @from %> data-date-end-date=<%= @to %> data-date-dates-disabled='<%= @space.confirmed_dates %>'>
         </div>
-        <input class="form-control col-12" type="hidden" name="date_requested" required>
+        <input class="form-control col-12" id='hidden_date' type='hidden' name='date' required>
         <input type='hidden' name='id' value='<%= @space.id %>'>
       </div>
 
