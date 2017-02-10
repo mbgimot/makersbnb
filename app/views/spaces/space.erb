@@ -12,15 +12,12 @@
 <%= @space.description %><br>
 <%= @space.price %><br>
 </div>
-<p>
-  <%= @space.confirmed_dates %>
-</p>
 <div class="row">
   <div class="col-12">
     <form action='/requests/new' method='POST'>
       <div class="form-group row">
         <label class="col-12 text-center mb-0 label-line-height" for='date'>Staying the Night Of</label>
-        <div class="col-12" id='space_datepicker' data-date-start-date='<%= @from %>' data-date-end-date='<%= @to %>' data-date-dates-disabled='15/02/2017'>
+        <div class="col-12" id='space_datepicker' data-date-start-date='<%= @from %>' data-date-end-date='<%= @to %>' data-date-dates-disabled='<%= @space.confirmed_dates%>'>
         </div>
         <input class="form-control col-12" id='hidden_date' type='hidden' name='date' required>
         <input type='hidden' name='id' value='<%= @space.id %>'>
