@@ -5,7 +5,7 @@ feature 'user can see detailed space' do
   before(:each) do
     sign_up_true
     visit('/spaces/view')
-    list_space
+    list_space_one
   end
 
   scenario "has a unique page for each listing" do

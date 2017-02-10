@@ -7,7 +7,11 @@ feature 'user can list a space' do
     email: 'test@test.com',
     password: 'password',
     password_conf: 'password')
-    @space = user.spaces.create(name: 'name', description: 'description', price: 90.00, date_available: '2017-02-10 00:00:00')
+    @space = user.spaces.create(name: 'name',
+    description: 'description',
+    price: 90.00,
+    available_from: '2017-02-10',
+    available_to: '2017-02-10')
     sign_in('test@test.com', 'password')
     expect(@space.user.name).to eq('name')
   end
@@ -15,7 +19,7 @@ feature 'user can list a space' do
   scenario 'user can fill in the listings form and create a space in the database' do
     visit '/'
     sign_up_true
-    list_space
+    list_space_one
     expect(current_path).to eq '/spaces/view'
     expect(page).to have_content('House by the sea')
   end
@@ -23,8 +27,8 @@ feature 'user can list a space' do
   scenario 'user can add multiple listings' do
     visit '/'
     sign_up_true
-    list_space
-    list_another_space
+    list_space_one
+    list_another_space_one
     expect( current_path ).to eq '/spaces/view'
     expect( page ).to have_content('House by the sea')
     expect( page ).to have_content('Penthouse apartment')

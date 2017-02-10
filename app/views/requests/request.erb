@@ -1,10 +1,8 @@
 <h1>Request for <%=@space.name %></h1>
 
+<% if @owner == @user %>
 <p>From: <%= @rentee.name %></p>
 <p>Date: <%= @booking.date_requested.strftime("%d %B, %Y") %></p>
-
-
-<% if @owner == @user %>
 
   <form name='confirm_or_decline' action='/requests/ammend' method='POST'>
     <input type='hidden' name='_method' value='put'>
@@ -28,4 +26,7 @@
     <% end %>
   </ul>
 
+<% else %>
+  <p>Owner: <%= @owner.name %></p>
+  <p>Date: <%= @booking.date_requested.strftime("%d %B, %Y") %></p>
 <% end %>

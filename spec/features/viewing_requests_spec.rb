@@ -16,9 +16,10 @@ feature 'viewing submitted and recieved requests' do
     space = owner.spaces.create(name: 'name',
       description: 'description',
       price: 90.00,
-      date_available: '2017-02-10 00:00:00'
+      available_from: '2017-02-10',
+      available_to: '2017-02-11',
     )
-    request = space.requests.create(date_requested: '2017-02-10 00:00:00', user: rentee)
+    request = space.requests.create(date_requested: '2017-02-10', user: rentee)
   end
 
   scenario 'requests made has correct details' do
