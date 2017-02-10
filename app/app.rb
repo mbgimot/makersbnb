@@ -82,19 +82,20 @@ class MakersBnB < Sinatra::Base
     @space = Space.first(id: params[:id])
     @to = @space.available_to.strftime("%d/%m/%Y")
     @from = @space.available_from.strftime("%d/%m/%Y")
+    p @to
+    p @space.confirmed_dates
     erb(:'spaces/space')
   end
 
   get '/requests/view' do
     @user = current_user
+
     erb(:'requests/view')
   end
 
   post '/requests/new' do
     @user = current_user
     space = Space.first(id: params[:id])
-    p params[:date]
-    booking_date = params[:date]
     if @user.id == space.user_id
       flash.now[:cannot_book_own_space] = ["Cannot request to book own property"]
     else

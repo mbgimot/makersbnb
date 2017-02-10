@@ -12,8 +12,8 @@ class Space
   has n, :requests
 
   def confirmed_dates
-    requests.map do |request|
-      request.date_requested if request.status == :confirmed
+    booked_dates = requests.map do |request|
+      request.date_requested.strftime("%d/%m/%Y") if request.status == :confirmed
     end
   end
 end
