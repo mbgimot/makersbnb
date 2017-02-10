@@ -1,47 +1,61 @@
-<h3><%if flash[:request_sent]%></h3>
-<h3><%=flash[:request_sent]%></h3>
-<%end%>
+<div class="container">
+    <%if flash[:request_sent]%>
+      <h3><%=flash[:request_sent]%></h3>
+    <%end%>
 
-
-
-<h1>Requests</h1>
-
-<div class="container"</div>
-  <div class="row">
-    <div class="col col-md-6"</div>
-      <div class='requests-received'>
-        <h1>Requests received</h1>
-        <ul class="list-unstyled-received">
-          <% @user.spaces.requests.each do |request| %>
-            <li>
-              <div id="space">
-                <p class='header'>Request From: <b><%= request.user.name %></b></p>
-                <p>Date Requested: <%= request.date_requested.strftime("%d %B, %Y") %></p>
-                <p>Status: <%= request.status.to_s.capitalize %></p>
-                <a href="/requests/<%=request.id%>"><button>Details</button></a>
-              </div>
-            </li>
-          <% end %>
-        </ul>
-      </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h2 class="page-header main-heading">
+              Requests<br>
+              <small>All your requests in one place</small>
+            </h2>
+        </div>
     </div>
 
-    <div class="col col-md-6"</div>
-      <div class='equests-made'>
-        <h1>Requests made</h1>
-        <ul class="list-unstyled-made">
-          <% @user.requests.each do |request| %>
-            <li>
-              <div id="space">
-                <p class='header'><b><%= request.space.name %></b></p>
-                <p>Date Requested: <%= request.date_requested.strftime("%d %B, %Y") %></p>
-                <p>Status: <%= request.status.to_s.capitalize %></p>
-                <a href="/requests/<%=request.id%>"><button>Details</button></a>
-              </div>
-            </li>
-          <% end %>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
+    <div class="row">
+        <div class="col col-md-6" </div>
+            <div class='requests-received'>
+                <h2 class="page-header">
+                  <small>Recieved</small><br>
+                </h2>
+                <ul class="list-unstyled">
+                    <% @user.spaces.requests.each do |request| %>
+                        <li>
+                            <div class="request-box">
+                                <p class='header'>Request from: <b><%= request.user.name %></b></p>
+                                <p>Date requested: <b><%= request.date_requested.strftime( "%d %B, %Y") %></b></p>
+                                <p>Status: <b><%= request.status.to_s.capitalize %></b></p>
+                                <a href="/requests/<%=request.id%>">
+                                    <button class="btn btn-default btn-details">Details</button>
+                                </a>
+                            </div>
+                        </li>
+                    <% end %>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col col-md-6" </div>
+            <div class='equests-made'>
+                <h2 class="page-header">
+                  <small>Made</small><br>
+                </h2>
+                <ul class="list-unstyled">
+                    <% @user.requests.each do |request| %>
+                        <li>
+                            <div class="info-box">
+                              <div class="info-tag"><%= request.space.name %></div>
+                              <div class="info-image" style="background-image: url('/uploads/<%= request.space.image %>')"></div>
+                              <div class="info-text">
+                                <p>Date requested: <b><%= request.date_requested.strftime( "%d %B, %Y") %></b></p>
+                                <p>Status: <b><%= request.status.to_s.capitalize %></b></p>
+                                <a href="/requests/<%=request.id%>">
+                                    <button class="btn btn-default btn-details">Details</button>
+                                </a>
+                              </div>
+                            </div>
+                        </li>
+                    <% end %>
+                </ul>
+            </div>
+        </div>

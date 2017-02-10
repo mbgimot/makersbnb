@@ -7,6 +7,7 @@ class Space
   property :price, Float, precision: 5, scale: 2, required: true
   property :availability, Boolean, default: true
   property :date_available, Date
+  property :image, String
 
   belongs_to :user
   has n, :requests
